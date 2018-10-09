@@ -9,13 +9,13 @@
     if ($con->initConexion('agenda_db')=='OK') {
 
 
-      $data['id'] = $_POST['id'];
+      $filter = "id='".$_POST['id']."'" ;
       $data['start_date'] = "'".$_POST['start_date']."'";  
       $data['end_date'] = "'".$_POST['end_date']."'";
       $data['start_hour'] = "'".$_POST['start_hour']."'";
       $data['end_hour'] = "'".$_POST['end_hour']."'";
 
-      if ($con->actualizarRegistro('agenda', $data)) {
+      if ($con->actualizarRegistro('agenda', $data, $filter)) {
         $response['msg']= 'OK';
       }else {
         $response['msg']= 'No se pudo realizar la actualizacion de los datos';
